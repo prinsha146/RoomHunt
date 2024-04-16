@@ -1,0 +1,71 @@
+<!-- Generated template for the FilterComponent component -->
+<!--<div>
+  {{text}}
+</div>-->
+<form [formGroup]="filterform">
+    <ion-list>
+        <ion-item>
+            <ion-label floating>
+                <ion-icon name="locate"></ion-icon> Location
+            </ion-label>
+            <ion-input clearInput type="text" [formControl]="filterform.controls['location']"></ion-input>
+            </ion-item>
+            
+        <ion-item>
+            <ion-label floating>
+                <ion-icon name="home"></ion-icon>Space Type
+            </ion-label>
+            <ion-select [formControl]="filterform.controls['spacetype']">
+                    <ion-option value="Home">Home</ion-option>
+                    <ion-option value="Room">Room</ion-option>
+                    <ion-option value="Flat">Flat</ion-option>
+                  </ion-select>
+            </ion-item>
+
+        <ion-item>
+            <ion-label floating>
+                <ion-icon name="cash"></ion-icon> Min Price
+            </ion-label>
+            <ion-input clearInput type="number" [formControl]="filterform.controls['minprice']"></ion-input>
+        </ion-item>
+
+
+        <ion-item>
+            <ion-label floating>
+                <ion-icon name="cash"></ion-icon> Max Price
+            </ion-label>
+            <ion-input clearInput type="number" [formControl]="filterform.controls['maxprice']"></ion-input>
+        </ion-item>
+
+
+        <ion-item>
+            <ion-label floating>
+                <ion-icon name="bulb"></ion-icon> Purpose
+            </ion-label>
+            <ion-select [formControl]="filterform.controls['purpose']">
+                <ion-option value="Accomodation">Accomodation</ion-option>
+                <ion-option value="Shop">Shop</ion-option>
+                <ion-option value="Office">Office</ion-option>
+              </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label icon-left item-left>
+                <ion-icon name="radio-button-on" padding-top></ion-icon>
+                Radius
+            </ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-range min="100" max="1000" step="100" snaps="true" [formControl]="filterform.controls['radius']">
+                <ion-label range-left>100m</ion-label>
+                <ion-label range-right>1Km</ion-label>
+            </ion-range>
+        </ion-item>
+
+
+        <ion-item>
+            <button ion-button icon-left item-right type="submit" (click)="filterin()">
+                <ion-icon name="search"></ion-icon>Search</button>
+        </ion-item>
+    </ion-list>
+</form>

@@ -1,0 +1,136 @@
+<!--
+  Generated template for the ProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+
+    <ion-navbar>
+      <ion-title>Profile</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content *ngIf = "seeker">
+    
+      <img src="assets/imgs/4.jpg" class="image">
+  
+      <div class="container">
+          <img src="assets/imgs/user.png" class="images" >
+        <div class="middle">
+            
+          <!-- <div class="text">John Doe</div> -->
+          <ion-icon name = "camera" (click)="presentPopover($event)" class="text"></ion-icon>
+        </div>
+      </div>
+      <ion-label class="content">
+        <h3>{{ seeker.Name }}</h3>
+      </ion-label>
+  
+      <ion-item padding class="about">
+        <ion-label class="abt">
+          ABOUT
+        </ion-label>
+      </ion-item>
+  
+      
+      <ion-card class="card">
+          <ion-card-content>
+            <ion-item>
+          <ion-label><strong>Email:&nbsp;</strong> {{seeker.Email}}</ion-label>
+        </ion-item>
+        <hr>
+        <ion-item>
+          <ion-label><strong>Address:&nbsp;</strong> {{seeker.Address}}</ion-label>
+        </ion-item>
+        <hr>
+        <ion-item>
+          <ion-label><strong>Phone:&nbsp;</strong> {{seeker.Phone}}</ion-label>
+        </ion-item>
+        </ion-card-content>
+        </ion-card>
+      
+        <ion-list padding-left padding-right padding-top>
+          <ion-item text-center>
+        <ion-label icon-left><ion-icon name="settings"></ion-icon>Settings</ion-label>
+      </ion-item>
+      </ion-list>
+      <ion-list padding-left padding-right>        
+        <ion-item text-center>
+        <ion-label icon-left (click)="logout()"><ion-icon name="log-out"></ion-icon>Logout</ion-label>
+      </ion-item>
+      </ion-list>
+
+  
+  </ion-content>
+
+        <!--<div padding>
+             <ion-segment [(ngModel)]="myprofile" class="segment segment-ios ng-untouched ng-pristine ng-valid">
+              <ion-segment-button class="segment-button segment-activated"  role="button" tappable="" value="About" aria-pressed="true" id="segment-button">
+                About
+              </ion-segment-button>
+              <ion-segment-button class="segment-button segment-activated" role="button" tappable="" value="Posts" aria-pressed="true"  id="segment-button">
+                My Posts
+              </ion-segment-button>
+              
+           </ion-segment>
+          </div>
+      
+          <div [ngSwitch] = "myprofile"  class="container">
+            
+            <ion-list *ngSwitchCase = "'About'">
+            
+            <ion-card class="card">
+              <ion-card-content>
+                <ion-item>
+              <ion-label>Name:</ion-label>
+              <ion-label>Prinsha</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Address</ion-label>
+              <ion-label>Saugal</ion-label>
+            </ion-item>
+            
+            </ion-card-content>
+            </ion-card>
+            </ion-list>
+      
+            <ion-list *ngSwitchCase = "'Posts'">
+              <ion-card class="card">
+                <ion-card-content  class="card-body">
+                  <ion-item>
+                  <ion-label>
+                    My post 1
+                    
+                  </ion-label>
+                </ion-item>
+                <button ion-button style="height: 20px" >Read more..</button>
+                </ion-card-content>
+              </ion-card>
+
+              <ion-card class="card">
+                <ion-card-content  class="card-body">
+                  <ion-item>
+                  <ion-label>
+                    My post 2
+                  </ion-label>
+                </ion-item>
+                </ion-card-content>
+              </ion-card>
+            </ion-list>
+          </div> -->
+
+
+
+
+
+
+
+
+
+
+
+

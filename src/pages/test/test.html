@@ -1,0 +1,52 @@
+<!--
+  Generated template for the TestPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>test</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-card *ngFor="let post of myPostList; let i = index">
+        <ion-toggle (ionChange)="valid($event,id)" checked = "true" >
+            <!-- <ion-toggle [(ngModel)]="notify" (ngModelChange)="valid($event,post.AvailableSpace.AvailableSpaceId)" > -->
+        </ion-toggle>
+        <!-- <ion-icon name="heart" ng-if="bookmark-post.AvailableSpace.AvailableSpaceId == 1"  (click)="valid($event,post.AvailableSpace.AvailableSpaceId)" style="color: red" checked = "true" ></ion-icon> -->
+        <!-- <ion-icon name="heart" [name] = "post.icon" (click)="valid($event,post.AvailableSpace.AvailableSpaceId)" checked = "true" ></ion-icon> -->
+        <p class="font">
+          
+            <strong>Space Type:&nbsp;</strong>{{ post.AvailableSpace.Space.SpaceTypeName }}
+                 <br> <strong>Address:&nbsp;</strong> {{ post.AvailableSpace.Address}}
+                 <br><strong>Price:&nbsp;</strong> {{ post.AvailableSpace.Price }} {{ post.AvailableSpace.PriceType.PriceTypeName}}
+                 <br><strong>No of available rooms:&nbsp;</strong> {{post.AvailableSpace.NoOfRooms}}
+                 <br>
+     </p>
+
+
+        <!-- <ion-card *ngIf="item.open"> Hello </ion-card>
+            <p>
+              <label>Prinsha Maharjan</label>
+              <label>Lalitpur</label>
+              <label>Age 21</label>
+            </p> -->
+      </ion-card>  
+
+      <!-- <ion-row>
+          <ion-col>
+            <ion-list>
+              <ion-item *ngFor="let post of myPostList">
+                <ion-label>Post: {{post.AvailableSpace.Space.SpaceTypeName}}</ion-label>
+                <ion-toggle [(ngModel)]="switch.value" (ionChange)="valid($event,id)"></ion-toggle>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row> -->
+
+</ion-content>

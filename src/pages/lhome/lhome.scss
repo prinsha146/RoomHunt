@@ -1,0 +1,50 @@
+page-lhome {
+    .container {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+
+        .row {
+            flex: 2;
+            flex-direction: row;
+            padding: 0px !important;
+            margin: 0px !important;
+
+            .col {
+                flex: 1;
+                padding: 0px !important;
+                margin: 0px !important;
+            }
+
+        }
+    }
+
+    .card{
+        box-shadow:  10px 10px 30px -5px rgba(124, 119, 119, 0.5);
+    }
+
+    .font{
+        font-size: 80%;
+        padding: 0 !important;
+    }
+
+    .smalltext{
+        font-size: 50%;
+    }
+
+    .item-inner {
+        padding: 0px !important;
+    }
+
+    .input-wrapper{
+        padding: 0px !important;
+    }
+
+    .btnfont{
+        //margin-bottom: 20%;
+        font-size:50%; 
+        position: sticky;
+        //bottom: 0;
+    }
+
+}

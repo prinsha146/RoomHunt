@@ -1,0 +1,90 @@
+<!--
+  Generated template for the BookmarkPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Bookmarks</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content
+                pullingIcon="arrow-dropdown"
+                pullingText="Pull to refresh"
+                refreshingSpinner="circles"
+                refreshingText="Refreshing...">
+        </ion-refresher-content>
+    </ion-refresher>
+  <!-- <div *ngFor="let name of names">
+    <h2>{{name}} is awesome</h2>
+  </div> -->
+
+  <!-- <ion-card *ngFor="let post of posts">
+  <p>{{posts}}</p>
+ </ion-card> -->
+
+  <!-- <div style="width:100%">
+    <ion-card *ngFor="let post of posts" class="card">
+        
+        <div style="width:40%; padding:1%; float:left">
+            <img src="../assets/imgs/4.jpg"> -->
+  <!-- /{{post.Photo}} -->
+  <!-- </div>
+        
+        <div style="width:50%; float:right; text-align: center; margin-top:-30%">
+          {{post.Description}}
+          <div>
+
+          </div>
+        </div>
+
+    </ion-card>
+</div> -->
+
+
+  
+<ion-card class="card" *ngFor="let post of bookmarkList; let i = index">
+    <ion-row>
+      <!-- active, edit icons -->
+
+    </ion-row>
+
+    <ion-row>
+      <!-- photo, description -->
+      <ion-col col-6>
+        <img src="assets/imgs/4.jpg" style="height:100%; width:100%;padding:2%">
+        <!-- photo-->
+      </ion-col>
+
+      <ion-col col-6>
+        <!-- description -->
+
+        <ion-item>
+          <ion-icon name="heart" checked = "true" class = "bookmark" item-right (click)="remove(post.BookmarkId,i)" [ngStyle]="{'color' : fontColor}" no-padding></ion-icon>
+          <ion-icon name="flag" item-right style="font-size: 20px" (click)="report(post.Facility.AvailableSpace.AvailableSpaceId)" [ngStyle]="{'color' : fontCo}" no-padding></ion-icon>
+        </ion-item>
+
+        <p class="font">
+          <strong>Space Type:&nbsp;</strong>{{ post.Facility.AvailableSpace.Space.SpaceTypeName }}
+                    <br> <strong>Address:&nbsp;</strong> {{post.Facility.AvailableSpace.Address}}
+                    <br><strong>Price:&nbsp;</strong> {{ post.Facility.AvailableSpace.Price }} {{post.Facility.AvailableSpace.PriceType.PriceTypeName}}
+                    <br><strong>No of available rooms:&nbsp;</strong> {{post.Facility.AvailableSpace.NoOfRooms}}
+                    <br>
+        </p>
+
+        <ion-row>
+          <button ion-button small class="btnfont">View On Map</button>
+          <button ion-button small class="btnfont" (click)="GoToDetails()">View Details</button>
+        </ion-row>
+
+      </ion-col>
+    </ion-row>
+  </ion-card>
+</ion-content>

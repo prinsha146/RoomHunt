@@ -1,0 +1,313 @@
+<!--
+  Generated template for the AvailablespacePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Available Space Form</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="spaceForm" ng-submit="spacein">
+    <ion-slides>
+      <ion-slide>
+        <div class="stepone">
+          <h3>Space Type</h3>
+          <ion-list radio-group [formControl]="spaceForm.controls['spacetype']">
+            <ion-item *ngFor="let space of spacetypeList" >
+              <ion-label>{{space.SpaceTypeName}}</ion-label>
+              <ion-label>
+                <img class="spacetypeimg" src="assets/imgs/{{space.SpaceTypeName}}.svg" />
+              </ion-label>
+              <ion-radio value="{{space.SpaceTypeId}}" ng-required></ion-radio>
+            </ion-item>
+          </ion-list>
+
+          <button ion-button end (click)="nextSlide()" color="bcolor" icon-right [disabled]="spaceForm.controls.spacetype.hasError('required')" >Step 2
+            <ion-icon name="arrow-forward"></ion-icon>
+          </button>
+        </div>
+      </ion-slide>
+
+      <ion-slide>
+        <div class="steptwo">
+          <h3>Location</h3>
+          <ion-list>
+
+            <ion-item>
+              <ion-label>Space Location</ion-label>
+            </ion-item>
+            <!--
+              <ion-grid>
+                <ion-row>
+                  <ion-col>
+                    <button ion-button block outline type="button" icon-left (click)="onLocate()">
+                      <ion-icon name="locate"></ion-icon>
+                      Locate me
+                    </button>
+                  </ion-col>
+
+                  <ion-col>
+                    <button ion-button block outline type="button" icon-left (click)="onOpenMap()">
+                      <ion-icon name = "map"></ion-icon>
+                      Select on Map
+                    </button>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>-->
+            <button ion-button class="button-block" color="bcolor" icon-left (click)="onLocate()">
+              <ion-icon name="locate"></ion-icon>
+              Locate Me</button>
+            <hr>
+            <span>OR</span>
+            <hr>
+            <button ion-button color="bcolor" color="bcolor" class="button-block" icon-left (click)="onOpenMap()">
+              <ion-icon name="pin"></ion-icon>
+              Select on Map</button>
+
+
+            <ion-item>
+              <ion-label>
+                Lat: {{ lat }} Lng: {{ lng }}
+              </ion-label>
+            </ion-item>
+            <div #map id="map"></div>
+          </ion-list>
+          <ion-list>
+            <ion-item>
+              <ion-label floating>Address<span class="red" *ngIf="spaceForm.controls.address.hasError('required')">&nbsp;*</span></ion-label>
+              <ion-input type="text" [formControl]="spaceForm.controls['address']"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="spaceForm.controls.address.hasError('required') && spaceForm.controls.address.touched" style="color: red;">
+              Address is required
+            </ion-item>
+          </ion-list>
+
+          <button ion-button (click)="previousSlide()" color="bcolor" icon-left>
+            <ion-icon name="arrow-back"></ion-icon> Back</button>
+          <button ion-button (click)="nextSlide()" [disabled]="spaceForm.controls.address.hasError('required')" color="bcolor" icon-right>Step 3
+            <ion-icon name="arrow-forward"></ion-icon>
+          </button>
+
+        </div>
+      </ion-slide>
+
+
+
+      <ion-slide>
+        <div id="stepthree">
+          <h3>General Description</h3>
+          <ion-list>
+            <ion-item>
+              <ion-label floating>Space Suitable For<span class="red" *ngIf="spaceForm.controls.suitable.hasError('required')">&nbsp;*</span></ion-label>
+              <ion-select [formControl]="spaceForm.controls['suitable']">
+                <ion-option *ngFor="let suitable of suitableforList" value="{{suitable.SuitableForId}}">{{suitable.SuitableForType}}</ion-option>
+              </ion-select>
+            </ion-item>
+            <ion-item *ngIf="spaceForm.controls.suitable.hasError('required') && spaceForm.controls.suitable.touched" style="color: red;">
+                Required.Is space suitable for living/shop/office?
+            </ion-item>
+
+            <ion-item>
+              <ion-label floating>House Type</ion-label>
+              <ion-select [formControl]="spaceForm.controls['housetype']">
+                <ion-option *ngFor="let house of houseList" value="{{house.HouseTypeId}}">{{house.HouseType}}</ion-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-item>
+              <ion-label floating>No of Storey</ion-label>
+              <ion-input type="number" [formControl]="spaceForm.controls['storeyno']"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label floating>No of Available Rooms<span class="red" *ngIf="spaceForm.controls.roomno.hasError('required')">&nbsp;*</span></ion-label>
+              <ion-input type="number" [formControl]="spaceForm.controls['roomno']"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="spaceForm.controls.roomno.hasError('required') && spaceForm.controls.roomno.touched" style="color: red;">
+              No of Available Rooms is required
+            </ion-item>
+          </ion-list>
+
+          <ion-list>
+            <ion-item>
+              <ion-label floating>Price&nbsp;<span class="red" *ngIf="spaceForm.controls.price.hasError('required')">*</span></ion-label>
+              <ion-input type="number" [formControl]="spaceForm.controls['price']"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="spaceForm.controls.price.hasError('required') && spaceForm.controls.price.touched" style="color: red;">
+              Price is required
+            </ion-item>
+
+
+            <ion-item>
+              <ion-label floating>Price Unit</ion-label>
+              <ion-select [formControl]="spaceForm.controls['priceunit']">
+                <ion-option *ngFor="let price of priceList" value="{{price.PriceTypeId}}">{{price.PriceTypeName}}</ion-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Is Price Negotiable</ion-label>
+              <ion-checkbox checked="false" [formControl]="spaceForm.controls['negotiable']"></ion-checkbox>
+            </ion-item>
+
+          </ion-list>
+
+          <button ion-button (click)="previousSlide()" color="bcolor" icon-left>
+            <ion-icon name="arrow-back"></ion-icon> Back</button>
+          <button ion-button (click)="nextSlide()" color="bcolor" icon-right [disabled]="spaceForm.controls.suitable.hasError('required') && spaceForm.controls.price.hasError('required')">Step 4
+            <ion-icon name="arrow-forward"></ion-icon>
+          </button>
+        </div>
+      </ion-slide>
+
+      <ion-slide>
+        <div class="stepfour">
+          <h3>Facilities</h3>
+
+          <ion-list>
+            <ion-item>
+              <ion-label floating>No of Bathroom</ion-label>
+              <ion-input type="number" [formControl]="spaceForm.controls['bathroomno']"></ion-input>
+            </ion-item>
+          </ion-list>
+
+          <ion-list>
+            <ion-item>
+              <ion-label>Parking</ion-label>
+            </ion-item>
+            <ion-list radio-group [formControl]="spaceForm.controls['parking']">
+              <ion-item *ngFor="let parking of parkingList">
+                <ion-label>{{parking.ParkingTypeName}}</ion-label>
+                <ion-radio value="{{parking.ParkingForId}}"></ion-radio>
+              </ion-item>
+             </ion-list>
+          </ion-list>
+
+          <ion-list>
+            <ion-item>
+              <ion-label>Water 24hr available</ion-label>
+              <ion-checkbox color="primary" [formControl]="spaceForm.controls['water']"></ion-checkbox>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Internet</ion-label>
+              <ion-checkbox color="primary" [formControl]="spaceForm.controls['internet']"></ion-checkbox>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Lift</ion-label>
+              <ion-checkbox color="primary" [formControl]="spaceForm.controls['lift']"></ion-checkbox>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Ceiling Fan</ion-label>
+              <ion-checkbox color="primary" [formControl]="spaceForm.controls['fan']"></ion-checkbox>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Generator</ion-label>
+              <ion-checkbox color="primary" [formControl]="spaceForm.controls['generator']"></ion-checkbox>
+            </ion-item>
+          </ion-list>
+
+
+          <button ion-button (click)="previousSlide()" color="bcolor" icon-left>
+            <ion-icon name="arrow-back"></ion-icon>Back</button>
+          <button ion-button (click)="nextSlide()" color="bcolor" icon-right>Step 5
+            <ion-icon name="arrow-forward"></ion-icon>
+          </button>
+        </div>
+      </ion-slide>
+
+      <ion-slide>
+        <div class="stepfive">
+          <h3>Details</h3>
+          <ion-list>
+            <ion-item>
+              <ion-label floating>Bathroom Details</ion-label>
+              <ion-select [formControl]="spaceForm.controls['bathroom']">
+                <ion-option *ngFor="let bathroom of bathroomList" value="{{bathroom.BathroomTypeId}}">{{
+                  bathroom.BathroomTypeName }}</ion-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-item>
+              <ion-label floating>Kitchen Details</ion-label>
+
+
+              <ion-select [formControl]="spaceForm.controls['kitchen']">
+                <ion-option *ngFor="let kitchen of kitchenList" value="{{kitchen.KitchenTypeId}}">{{kitchen.KitchenTypeName}}</ion-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-item>
+              <ion-label floating>Water Supply</ion-label>
+              <ion-select [formControl]="spaceForm.controls['watertype']">
+                <ion-option *ngFor="let water of waterList" value="{{water.WaterTypeId}}">{{water.WaterTypeName}}</ion-option>
+              </ion-select>
+            </ion-item>
+
+
+
+
+            <ion-item>
+              <ion-label floating>Tenants Preferred</ion-label>
+              <ion-select [formControl]="spaceForm.controls['preference']">
+                <ion-option *ngFor="let preference of preferenceList" value="{{preference.PreferenceId}}">{{preference.PreferenceName}}</ion-option>
+              </ion-select>
+            </ion-item>
+
+
+            <ion-item>
+              <ion-label floating>Space Environment</ion-label>
+              <ion-select [formControl]="spaceForm.controls['environment']">
+                <ion-option *ngFor="let environment of environmentList" value="{{environment.EnvironmentId}}">{{environment.EnvironmentType}}</ion-option>
+              </ion-select>
+            </ion-item>
+
+
+            <ion-item>
+              <ion-label floating>Description</ion-label>
+              <ion-textarea [formControl]="spaceForm.controls['description']"></ion-textarea>
+            </ion-item>
+
+          </ion-list>
+
+          <button ion-button (click)="previousSlide()" color="bcolor" icon-left>
+            <ion-icon name="arrow-back"></ion-icon>Back</button>
+          <button ion-button (click)="nextSlide()" color="bcolor" icon-right>Step 6
+            <ion-icon name="arrow-forward"></ion-icon>
+          </button>
+        </div>
+      </ion-slide>
+
+      <ion-slide>
+        <div class="stepsix">
+          <h3>Space Images</h3>
+          <button ion-button full (click)="openCamera()" color="bcolor" icon-left>
+            <ion-icon name="camera"></ion-icon>Take Picture</button>
+          <hr>
+          <span>Or</span>
+          <hr>
+          <br>
+          <button ion-button full (click)="openGallery()" color="bcolor" icon-left>
+            <ion-icon name="image"></ion-icon>
+            Choose Photo</button>
+          <hr>
+          <img src="{{ myPhoto }}" />
+          <hr>
+          <button ion-button (click)="previousSlide()" color="bcolor" icon-left>
+            <ion-icon name="arrow-back"></ion-icon>Back</button>
+          <button ion-button [disabled]="!spaceForm.valid" color="bcolor" type="submit" (click)="spacein()">
+            Submit
+          </button>
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </form>
+</ion-content>

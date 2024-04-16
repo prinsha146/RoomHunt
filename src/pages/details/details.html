@@ -1,0 +1,40 @@
+<!--
+  Generated template for the DetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Details</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="dismiss()">Dismiss</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content no padding>
+
+  <div class="slider" no-padding>
+    <ion-slides pager = "true" autoplay = "2000" loop ="true" speed = "1000" effect = "fade" (ionSlideDidChange) = "slideChanged()">
+      <ion-slide *ngFor = "let slide of image" class = "swiper-no-swiping" >
+        <img src = {{slide}} style = "width: 100%"/>
+      </ion-slide>
+    </ion-slides>
+  </div>
+
+  <div class="bottom" padding>
+    <h2 text-center>Rental Space</h2>
+    <ion-list padding-top>
+      <ion-label>Space Type:</ion-label> 
+      <ion-label>Location</ion-label>
+      <ion-label>General Description</ion-label>
+      <ion-label>Facilities</ion-label>
+      <ion-label>Details</ion-label>
+    </ion-list>
+  </div>
+
+</ion-content>

@@ -1,0 +1,44 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="siginForm" (ngSubmit)="signin()">
+    
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Phone Number</ion-label>
+        <ion-input type="number" [formControl]="siginForm.controls['phone']"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="siginForm.controls.phone.hasError('required') && siginForm.controls.phone.touched" style="color: red;">
+        Phone is required
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input type="password" [formControl]="siginForm.controls['password']"></ion-input>
+      </ion-item>
+      
+      <ion-item *ngIf="siginForm.controls.password.hasError('required') && siginForm.controls.password.touched" style="color: red;">
+        Password is required
+    </ion-item>
+    </ion-list>
+    
+    <button ion-button block [disabled]="!siginForm.valid" color = "bcolor">Sign In</button> 
+    <p style="font-size: 1em; color:blue;" text-center>
+        <u>Forgot Password?</u>
+      </p>
+  
+      <span class="span">OR</span>
+      <hr>
+      <br>
+      <button ion-button full color="bcolor" type="button" (click)="goToSignup()">Create an Account</button>
+  
+</form>
+
+</ion-content>

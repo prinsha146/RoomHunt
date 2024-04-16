@@ -1,0 +1,82 @@
+<!--
+  Generated template for the ProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Profile</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content *ngIf="landlord">
+  
+    <img src="assets/imgs/4.jpg" class="image">
+
+    <div class="container">
+        <img src="assets/imgs/user.png" class="images" >
+      <div class="middle">
+          
+        <!-- <div class="text">John Doe</div> -->
+        <ion-icon name = "camera" (click)="presentPopover($event)" class="text"></ion-icon>
+      </div>
+    </div>
+    <ion-label class="content">
+      <h3>{{ landlord.Name }}</h3>
+    </ion-label>
+
+    <ion-item padding class="about">
+      <ion-label class="abt">
+        ABOUT
+      </ion-label>
+    </ion-item>
+
+    
+    <ion-card class="card">
+        <ion-card-content>
+          <ion-item>
+        <ion-label><strong>Email:&nbsp;</strong> {{ landlord.Email }}</ion-label>
+      </ion-item>
+      <hr>
+      <ion-item>
+        <ion-label><strong>Address:&nbsp;</strong> {{ landlord.Address }}</ion-label>
+      </ion-item>
+      <hr>
+      <ion-item>
+        <ion-label><strong>Phone:&nbsp;</strong> {{ landlord.Phone }}</ion-label>
+      </ion-item>
+      </ion-card-content>
+      </ion-card>
+    
+      <ion-list padding-left padding-right padding-top>
+        <ion-item text-center>
+      <ion-label icon-left><ion-icon name="settings"></ion-icon>Settings</ion-label>
+    </ion-item>
+
+    </ion-list>
+    <ion-list padding-left padding-right>        
+      <ion-item text-center>
+      <ion-label icon-left (click)="logout()"><ion-icon name="log-out"></ion-icon>Logout</ion-label>
+    </ion-item>
+    </ion-list>
+
+
+</ion-content>
+
+     
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,35 @@
+page-mypost {
+.add{
+    height: 15%;
+    width: 20%;
+}
+
+card{
+    box-shadow:  10px 10px 30px -5px rgba(124, 119, 119, 0.5);
+}
+
+.font{
+    font-size: 80%;
+}
+
+
+.item-inner {
+    padding: 0px !important;
+}
+
+.input-wrapper{
+    padding: 0px !important;
+}
+
+.btnfont{
+    //margin-bottom: 20%;
+    font-size:50%; 
+    position: sticky;
+    //bottom: 0;
+}
+
+.toggle{
+    //width: 20%;
+    padding: 0px !important;
+}
+}
